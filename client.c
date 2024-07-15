@@ -6,7 +6,14 @@
 /*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:42:56 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/12 11:57:25 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:57:38 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minitalk.h"
+
+int main(int argc, char **argv)
+{
+    char    *string;
+    int
+}
