@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:42:56 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/15 13:57:38 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/16 12:30:20 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ void broadcast(int pid,char *string)
 	int	string_position;
 	int	bit_position;
 
-	string_position = -1;
-	while (++bit_position < 8)
+	string_position = 0;
+	while (string[string_position])
 	{
-		if (((unsigned char)(string[string_position] >> (7 -bit_position)) & 1)== 0)
+		bit_position = -1;
+		while (++bit_position < 8)
+	{
+		if (((unsigned char)(string[string_position] >> (7 - bit_position)) & 1)== 0)
 		{
 			kill(pid, SIGUSR1);
 		}
@@ -48,6 +51,10 @@ void broadcast(int pid,char *string)
 		}
 		usleep(200);
 	}
+	string_position++;
+	}
+	
+	
 	bit_position = 0;
 	while (bit_position++ < 8)
 	{

@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:43:24 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/15 12:36:42 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:23:03 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	signal_handler(int	sig)
 	static char	*string;
 
 	if (!string)
-		ft_strdup("");
+		string = ft_strdup("");
 	if (sig == SIGUSR2)
 		char_value = ((char_value << 1) | 1);
-	else if (sig = SIGUSR1)
+	else if (sig == SIGUSR1)
 		char_value = (char_value << 1);
 	bit_position++;
 	if (bit_position == 8)
@@ -69,18 +69,15 @@ void	signal_handler(int	sig)
 int	main(void)
 {
 	struct sigaction	sa;
-	{
-		ft_printf("Server P I D --> %d\n", getpid());
-		sa.sa_handler = signal_handler;
-		sa.sa_flags = 0;
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
-		while (1)
-		{
-			pause();
-		}
-		return (0);
-		
-	};
 	
+	ft_printf("Server P I D --> %d\n", getpid());
+	sa.sa_handler = signal_handler;
+	sa.sa_flags = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
+	{
+		pause();
+	}
+		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:52:57 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/12 11:57:25 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:50:25 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,6 @@
 # define MINITALK_H
 # include <signal.h>
 # include "libft/libft.h"
-# include "printf/printf.h"
+# include "printf/ft_printf.h"
+
+#endif
