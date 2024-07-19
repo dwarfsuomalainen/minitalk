@@ -6,11 +6,10 @@
 /*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:44:15 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/01/16 11:48:53 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:33:39 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 int	ft_print_c(char specifier, va_list ap)
@@ -37,7 +36,7 @@ int	ft_print_c(char specifier, va_list ap)
 	else if (specifier == '%')
 		count += ft_print_char('%');
 	else
-		count += ft_print_char((int) &specifier);
+		count += ft_print_char(specifier);
 	return (count);
 }
 

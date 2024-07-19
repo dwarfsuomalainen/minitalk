@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 15:41:21 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/01/15 15:16:27 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:48:09 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <limits.h>
-# include "libft/libft.h"
 
 int		ft_print_char(int c);
 int		ft_print_string(char *str);

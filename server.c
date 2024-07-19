@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/10 11:43:24 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/16 13:23:03 by rbogoudi         ###   ########.fr       */
+/*   Created: 2024/07/17 12:15:11 by rbogoudi          #+#    #+#             */
+/*   Updated: 2024/07/19 12:26:54 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*string_add(char const *s1, char const letter)
 	j = 0;
 	tab = malloc((ft_strlen(s1) + 2) * sizeof(char));
 	if (!tab)
-		return(NULL);
+		return (NULL);
 	while (s1[i])
 	{
 		tab[j++] = s1[i++];
@@ -30,22 +30,21 @@ char	*string_add(char const *s1, char const letter)
 	i = 0;
 	tab[j++] = letter;
 	tab[j] = 0;
-	free ((void *)(s1));
-	return (tab);	 
+	free((void *)(s1));
+	return (tab);
 }
 
 void	print_and_free(char **string)
 {
 	ft_printf("%s\n", *string);
-	free  (*string);
+	free(*string);
 	*string = NULL;
 }
 
-void	signal_handler(int	sig)
+void	signal_handler(int sig)
 {
 	static int	bit_position = 0;
 	static int	char_value = 0;
-	static int	length = 0;
 	static char	*string;
 
 	if (!string)
@@ -57,19 +56,18 @@ void	signal_handler(int	sig)
 	bit_position++;
 	if (bit_position == 8)
 	{
-		string = string_add(string,char_value);
+		string = string_add(string, char_value);
 		if (char_value == '\0')
 			print_and_free(&string);
 		bit_position = 0;
 		char_value = 0;
-		length += 1;		
 	}
 }
 
 int	main(void)
 {
 	struct sigaction	sa;
-	
+
 	ft_printf("Server P I D --> %d\n", getpid());
 	sa.sa_handler = signal_handler;
 	sa.sa_flags = 0;
@@ -79,5 +77,5 @@ int	main(void)
 	{
 		pause();
 	}
-		return (0);
+	return (0);
 }

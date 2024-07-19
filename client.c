@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:42:56 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/16 12:30:20 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/19 13:36:11 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void err_msg_exit(int error_code)
+void	err_msg_exit(int error_code)
 {
 	if (error_code == 1)
 		ft_printf("[+] Error: \033[31mNo server_id\n\033[0m \n");
@@ -27,10 +27,10 @@ void err_msg_exit(int error_code)
 		./client<P I D Server> <\"STRING\">\n\033[0m \n");
 	if (error_code == 6)
 		ft_printf("[+] Error: \033[31mKill signal failed\n\033[0m \n");
-	exit (0);
+	exit(0);
 }
 
-void broadcast(int pid,char *string)
+void	broadcast(int pid, char *string)
 {
 	int	string_position;
 	int	bit_position;
@@ -40,21 +40,16 @@ void broadcast(int pid,char *string)
 	{
 		bit_position = -1;
 		while (++bit_position < 8)
-	{
-		if (((unsigned char)(string[string_position] >> (7 - bit_position)) & 1)== 0)
 		{
-			kill(pid, SIGUSR1);
+			if (((unsigned char)(string[string_position] >> (7
+						- bit_position)) & 1) == 0)
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			usleep(200);
 		}
-		else
-		{
-			kill(pid, SIGUSR2);
-		}
-		usleep(200);
+		string_position++;
 	}
-	string_position++;
-	}
-	
-	
 	bit_position = 0;
 	while (bit_position++ < 8)
 	{
@@ -63,10 +58,10 @@ void broadcast(int pid,char *string)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    char	*string;
-    int		server_id;
+	char	*string;
+	int		server_id;
 
 	if (argc == 3)
 	{
@@ -76,7 +71,7 @@ int main(int argc, char **argv)
 		if (kill(server_id, 0) == -1)
 			err_msg_exit(3);
 		string = argv[2];
-		if (string[0]== 0)
+		if (string[0] == 0)
 			err_msg_exit(2);
 		broadcast(server_id, string);
 	}

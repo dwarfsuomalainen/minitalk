@@ -6,11 +6,11 @@
 #    By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 13:32:21 by rbogoudi          #+#    #+#              #
-#    Updated: 2024/01/15 14:27:41 by rbogoudi         ###   ########.fr        #
+#    Updated: 2024/07/19 14:24:53 by rbogoudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = printf.a
 
 SOURCES = 	ft_print_char.c \
 			ft_print_string.c \
@@ -24,13 +24,9 @@ SOURCES = 	ft_print_char.c \
 		
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I
 
 HEADERS = ft_printf.h
-
-LIBFT = libft/libft.a
-
-LIBFT_DIR = ./libft
 
 CC = cc
 
@@ -39,21 +35,15 @@ CC = cc
 
 all: $(NAME)
 
-
 # Rule for building the target file
-$(NAME): $(LIBFT) $(OBJECTS)
-	cp $(LIBFT) $(NAME) 
+$(NAME): $(OBJECTS) 
 	ar rcs $(NAME) $(OBJECTS)
-
-# Rule for building libft
-$(LIBFT) : $(LIBFT_DIR )
-	$(MAKE) -C $(LIBFT_DIR:.c=.o)
 
 clean:
 	rm -rf $(OBJECTS)
 
 fclean: clean	
-	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) fclean -C
 	rm -rf $(NAME)
 
 re: fclean all

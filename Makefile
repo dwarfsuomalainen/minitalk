@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbogoudi <rbogoudi@student.42.fr>          +#+  +:+       +#+         #
+#    By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:52:26 by rbogoudi          #+#    #+#              #
-#    Updated: 2024/07/15 14:34:28 by rbogoudi         ###   ########.fr        #
+#    Updated: 2024/07/19 14:18:45 by rbogoudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ S_OBJECT = $(S_SOURCE:.c=.o)
 
 LIBFT = libft/libft.a
 
-PRINTF = printf/libftprintf.a
+PRINTF = printf/printf.a
 
 all: $(CLIENT_NAME) $(SERVER_NAME)
 
@@ -35,13 +35,13 @@ $(CLIENT_NAME): $(C_OBJECT)
 	@make -C libft
 	@make -C printf
 	@cc -Wall -Wextra -Werror $(C_OBJECT) $(LIBFT) $(PRINTF) -o $(CLIENT_NAME)
-	@echo client made
+	@echo client has been created
 
 $(SERVER_NAME): $(S_OBJECT)
 	@make -C libft
 	@make -C printf
 	@cc -Wall -Wextra -Werror $(S_OBJECT) $(LIBFT) $(PRINTF) -o $(SERVER_NAME)
-	@echo server made
+	@echo server has been created
 
 clean:
 	rm -f $(C_OBJECT)
@@ -54,7 +54,6 @@ fclean: clean
 	@rm -f $(SERVER_NAME)
 	@rm -f libft/libft.a
 	@rm -f printf/libftprintf.a
-	@rm -f printf/libft/libft.a
 
 re: fclean all
 
