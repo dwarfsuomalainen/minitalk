@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:15:11 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/19 12:26:54 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:50:34 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ char	*string_add(char const *s1, char const letter)
 	j = 0;
 	tab = malloc((ft_strlen(s1) + 2) * sizeof(char));
 	if (!tab)
+	{
+		free((void *)(s1));
 		return (NULL);
+	}
 	while (s1[i])
 	{
 		tab[j++] = s1[i++];

@@ -6,7 +6,7 @@
 #    By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 11:52:26 by rbogoudi          #+#    #+#              #
-#    Updated: 2024/07/19 14:18:45 by rbogoudi         ###   ########.fr        #
+#    Updated: 2024/07/23 11:30:05 by rbogoudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,11 @@ $(CLIENT_NAME): $(C_OBJECT)
 	@make -C libft
 	@make -C printf
 	@cc -Wall -Wextra -Werror $(C_OBJECT) $(LIBFT) $(PRINTF) -o $(CLIENT_NAME)
-	@echo client has been created
+	@echo client created read documentation how to run
 
 $(SERVER_NAME): $(S_OBJECT)
-	@make -C libft
-	@make -C printf
 	@cc -Wall -Wextra -Werror $(S_OBJECT) $(LIBFT) $(PRINTF) -o $(SERVER_NAME)
-	@echo server has been created
+	@echo server made read documentation how to run
 
 clean:
 	rm -f $(C_OBJECT)

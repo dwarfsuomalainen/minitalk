@@ -6,7 +6,7 @@
 #    By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 13:32:21 by rbogoudi          #+#    #+#              #
-#    Updated: 2024/07/19 14:24:53 by rbogoudi         ###   ########.fr        #
+#    Updated: 2024/07/19 12:03:02 by rbogoudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SOURCES = 	ft_print_char.c \
 		
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I
+CFLAGS = -Wall -Wextra -Werror
 
 HEADERS = ft_printf.h
 

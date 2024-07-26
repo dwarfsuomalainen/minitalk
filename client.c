@@ -6,7 +6,7 @@
 /*   By: rbogoudi <rbogoudi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 11:42:56 by rbogoudi          #+#    #+#             */
-/*   Updated: 2024/07/19 13:36:11 by rbogoudi         ###   ########.fr       */
+/*   Updated: 2024/07/24 13:03:44 by rbogoudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	broadcast(int pid, char *string)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(200);
+			usleep(1400);
 		}
 		string_position++;
 	}
